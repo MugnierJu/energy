@@ -1,10 +1,13 @@
 package energy.delivery.importData;
 
-public class ImportMatrix implements ImportDataInterface {
+public class ImportMatrix extends AbstractImportData {
 
-	public void importData(String path) {
-		// TODO Auto-generated method stub
-		
+	public ImportMatrix(String path) {
+		super(path);
+	}
+
+	public Object importData(String path) {
+		return null;
 	}
 
 }

@@ -1,10 +1,13 @@
 package energy.delivery.importData;
 
-public class ImportCoord implements ImportDataInterface {
+public class ImportCoord extends AbstractImportData {
+	
+	public ImportCoord(String path) {
+		super(path);
+	}
 
-	public void importData(String path) {
-		// TODO Auto-generated method stub
-		
+	public Object importData(String path) {
+		return null;
 	}
 	
 	
