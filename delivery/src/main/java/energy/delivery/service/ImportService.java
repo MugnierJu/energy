@@ -40,6 +40,7 @@ public class ImportService {
 			Client newClient = new Client(coordinateList.get(i), demandeList.get(i));
 			clientList.add(newClient);
 		}
+		data.setClientList(clientList);
 		
 		//Import vehicle
 		ImportVehicle importVehicle = new ImportVehicle(resourcesPath+PropertiesService.getInstance().getProperty("vehicleFile"));

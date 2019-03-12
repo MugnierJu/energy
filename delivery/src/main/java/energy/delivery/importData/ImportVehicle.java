@@ -41,7 +41,7 @@ public class ImportVehicle extends AbstractImportData {
 			String end = prefs.node("Vehicle").get("end_time","");
 			start = start.replace("\"", "");
 			end = end.replace("\"", "");
-			System.out.println(end);
+			
 			String[] startTab = start.split(":");
 			String[] endTab = end.split(":");
 			

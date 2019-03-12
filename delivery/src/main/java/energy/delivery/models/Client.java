@@ -28,6 +28,4 @@ public class Client {
 		this.request = request;
 	}
 	
-	
-	
 }
