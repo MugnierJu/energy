@@ -6,9 +6,11 @@ import java.util.List;
 import energy.delivery.importData.ImportCoord;
 import energy.delivery.importData.ImportDemand;
 import energy.delivery.importData.ImportMatrix;
+import energy.delivery.importData.ImportVehicle;
 import energy.delivery.models.Client;
 import energy.delivery.models.Coordinate;
 import energy.delivery.models.EntryData;
+import energy.delivery.models.Vehicule;
 
 public class ImportService {
 
@@ -39,7 +41,9 @@ public class ImportService {
 			clientList.add(newClient);
 		}
 		
-		
+		//Import vehicle
+		ImportVehicle importVehicle = new ImportVehicle(resourcesPath+PropertiesService.getInstance().getProperty("vehicleFile"));
+		data.setVehiculeStat((Vehicule) importVehicle.importData());	
 		
 		return data;
 	}

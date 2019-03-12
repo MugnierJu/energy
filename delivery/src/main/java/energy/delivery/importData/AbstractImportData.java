@@ -12,8 +12,10 @@ import java.util.Scanner;
 public abstract class AbstractImportData {
 
 	private String data;
+	protected String path;
 	
 	public AbstractImportData(String path){
+		this.path = path;
 		data = getDataFromFile(path);
 	}
 	

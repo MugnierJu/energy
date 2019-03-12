@@ -11,6 +11,7 @@ public class Vehicule {
 	int charge_fast;
 	int charge_medium;
 	int charge_slow;
+	//Temps en seconde
 	int start_time;
 	int end_time;
 	
