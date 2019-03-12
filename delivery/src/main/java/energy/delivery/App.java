@@ -1,5 +1,8 @@
 package energy.delivery;
 
+import energy.delivery.service.ImportService;
+import energy.delivery.service.PropertiesService;
+
 /**
  * Hello world!
  *
@@ -8,7 +11,6 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-        
+        ImportService.getData();         
     }
 }

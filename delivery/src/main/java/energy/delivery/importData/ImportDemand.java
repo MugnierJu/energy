@@ -10,7 +10,7 @@ public class ImportDemand extends AbstractImportData {
 		super(path);
 	}
 
-	public Object importData(String path) {
+	public Object importData() {
 		return null;
 	}
 }

@@ -7,24 +7,24 @@ package energy.delivery.models;
  */
 public class Coordinate {
 	
-	long x;
-	long y;
+	double x;
+	double y;
 	
-	public Coordinate(long x,long y) {
+	public Coordinate(double x,double y) {
 		this.x = x;
 		this.y = y;
 	}
 	
-	public long getX() {
+	public double getX() {
 		return x;
 	}
-	public void setX(long x) {
+	public void setX(double x) {
 		this.x = x;
 	}
-	public long getY() {
+	public double getY() {
 		return y;
 	}
-	public void setY(long y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 	

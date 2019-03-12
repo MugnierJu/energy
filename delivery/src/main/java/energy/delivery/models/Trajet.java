@@ -9,12 +9,12 @@ package energy.delivery.models;
  */
 public class Trajet {
 
-	long distance;
-	long time;
+	double distance;
+	double time;
 	Coordinate departureCoordinate;
 	Coordinate arrivalCoordinate;
 	
-	public Trajet(long distance, long time, Coordinate departureCoordinate, Coordinate arrivalCoordinate) {
+	public Trajet(double distance, double time, Coordinate departureCoordinate, Coordinate arrivalCoordinate) {
 		super();
 		this.distance = distance;
 		this.time = time;
@@ -22,19 +22,19 @@ public class Trajet {
 		this.arrivalCoordinate = arrivalCoordinate;
 	}
 
-	public long getDistance() {
+	public double getDistance() {
 		return distance;
 	}
 
-	public void setDistance(long distance) {
+	public void setDistance(double distance) {
 		this.distance = distance;
 	}
 
-	public long getTime() {
+	public double getTime() {
 		return time;
 	}
 
-	public void setTime(long time) {
+	public void setTime(double time) {
 		this.time = time;
 	}
 

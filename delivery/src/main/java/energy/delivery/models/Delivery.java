@@ -12,7 +12,7 @@ import java.util.List;
 public class Delivery {
 
 	List<Coordinate> deliveryPoints;
-	long totalDistance;
-	long totalTime;
+	double totalDistance;
+	double totalTime;
 	List<Trajet> trajetList;	
 }

@@ -9,12 +9,12 @@ import java.util.List;
  */
 public class EntryData {
 	
-	List<List<Long>> timeMatrix;
-	List<List<Long>> distanceMatrix;
+	List<List<Double>> timeMatrix;
+	List<List<Double>> distanceMatrix;
 	List<Client> clientList;
 	Vehicule vehiculeStat;
 	
-	public EntryData(List<List<Long>> timeMatrix, List<List<Long>> distanceMatrix, List<Client> clientList,
+	public EntryData(List<List<Double>> timeMatrix, List<List<Double>> distanceMatrix, List<Client> clientList,
 			Vehicule vehiculeStat) {
 		super();
 		this.timeMatrix = timeMatrix;
@@ -23,16 +23,18 @@ public class EntryData {
 		this.vehiculeStat = vehiculeStat;
 	}
 	
-	public List<List<Long>> getTimeMatrix() {
+	public EntryData() {}
+	
+	public List<List<Double>> getTimeMatrix() {
 		return timeMatrix;
 	}
-	public void setTimeMatrix(List<List<Long>> timeMatrix) {
+	public void setTimeMatrix(List<List<Double>> timeMatrix) {
 		this.timeMatrix = timeMatrix;
 	}
-	public List<List<Long>> getDistanceMatrix() {
+	public List<List<Double>> getDistanceMatrix() {
 		return distanceMatrix;
 	}
-	public void setDistanceMatrix(List<List<Long>> distanceMatrix) {
+	public void setDistanceMatrix(List<List<Double>> distanceMatrix) {
 		this.distanceMatrix = distanceMatrix;
 	}
 	public List<Client> getClientList() {
