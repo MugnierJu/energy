@@ -3,6 +3,20 @@ package energy.delivery.importData;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * @author Julien Mugnier - Baptiste Rambaud
+ *
+ * Format doit être comme suit :
+ * |x x x x
+ * |x x x x
+ * |x x x x
+ * |x x x x
+ * 
+ * seulement les valeurs séparées par UN espace
+ * taille colone = taille ligne
+ * 
+ */
 public class ImportMatrix extends AbstractImportData {
 
 	public ImportMatrix(String path) {

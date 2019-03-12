@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author Julien Mugnier - Baptiste Rambaud
+ *
+ */
 public abstract class AbstractImportData {
 
 	private String data;
