@@ -37,7 +37,7 @@ public class ImportService {
 		List<Integer> demandeList = (List<Integer>) demandImport.importData();
 		List<Coordinate> coordinateList = (List<Coordinate>) coordinateImport.importData();
 		for(int i = 0; i< demandeList.size(); i++) {
-			Client newClient = new Client(coordinateList.get(i), demandeList.get(i));
+			Client newClient = new Client(coordinateList.get(i), demandeList.get(i),i);
 			clientList.add(newClient);
 		}
 		data.setClientList(clientList);

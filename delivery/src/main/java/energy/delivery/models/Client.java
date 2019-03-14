@@ -9,10 +9,12 @@ public class Client {
 
 	Coordinate coordinate;
 	int request;
+	int matrixIndex;
 	
-	public Client(Coordinate coordinate,int request) {
+	public Client(Coordinate coordinate,int request, int matrixIndex) {
 		this.coordinate = coordinate;
 		this.request = request;
+		this.matrixIndex = matrixIndex;
 	}
 	
 	public Coordinate getCoordinate() {
@@ -27,5 +29,10 @@ public class Client {
 	public void setRequest(int request) {
 		this.request = request;
 	}
-	
+	public int getMatrixIndex() {
+		return matrixIndex;
+	}
+	public void setMatrixIndex(int matrixIndex) {
+		this.matrixIndex = matrixIndex;
+	}	
 }
