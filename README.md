@@ -16,3 +16,5 @@ On s'arrête quand la somme est égale à C ou que l’on a parcouru tout le tab
 
 
 Les données fournies son formattées et sont présentes sous energy/delivery/resources/
+
+Aucun affichage n'est disponible pour le moment. Néanmoins, il est possible d'accéder à toutes les données en sortie depuis le main (App.java).
