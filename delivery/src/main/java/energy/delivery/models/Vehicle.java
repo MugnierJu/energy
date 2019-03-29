@@ -4,7 +4,7 @@ package energy.delivery.models;
  * @author Julien Mugnier - Baptiste Rambaud
  *
  */
-public class Vehicule {
+public class Vehicle {
 
 	int max_dist;
 	int capacity;
@@ -15,7 +15,7 @@ public class Vehicule {
 	int start_time;
 	int end_time;
 	
-	public Vehicule(int max_dist, int capacity, int charge_fast, int charge_medium, int charge_slow, int start_time,
+	public Vehicle(int max_dist, int capacity, int charge_fast, int charge_medium, int charge_slow, int start_time,
 			int end_time) {
 		super();
 		this.max_dist = max_dist;

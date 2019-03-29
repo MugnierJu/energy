@@ -4,6 +4,11 @@ import java.util.Comparator;
 
 import energy.delivery.models.Client;
 
+/**
+ * 
+ * @author Julien Mugnier - Baptiste Rambaud
+ *
+ */
 public class ClientRequestComparator implements Comparator<Client>  {
 
     public int compare(Client c1, Client c2) {

@@ -7,6 +7,11 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
+/**
+ * 
+ * @author Julien Mugnier - Baptiste Rambaud
+ *
+ */
 public class PropertiesService {
 	private static Properties prop;
 

@@ -7,7 +7,7 @@ import org.ini4j.Ini;
 import org.ini4j.IniPreferences;
 import org.ini4j.InvalidFileFormatException;
 
-import energy.delivery.models.Vehicule;
+import energy.delivery.models.Vehicle;
 
 /**
  * 
@@ -48,7 +48,7 @@ public class ImportVehicle extends AbstractImportData {
 			int startTime = Integer.valueOf(startTab[0])*60*60+Integer.valueOf(startTab[1])*60;
 			int endTime = Integer.valueOf(endTab[0])*60*60+Integer.valueOf(endTab[1])*60;;
 			
-			return new Vehicule(prefs.node("Vehicle").getInt("max_dist",-1), prefs.node("Vehicle").getInt("capacity",-1) ,prefs.node("Vehicle").getInt("charge_fast",-1), prefs.node("Vehicle").getInt("charge_midium",-1), prefs.node("Vehicle").getInt("charge_slow",-1),startTime,endTime);
+			return new Vehicle(prefs.node("Vehicle").getInt("max_dist",-1), prefs.node("Vehicle").getInt("capacity",-1) ,prefs.node("Vehicle").getInt("charge_fast",-1), prefs.node("Vehicle").getInt("charge_midium",-1), prefs.node("Vehicle").getInt("charge_slow",-1),startTime,endTime);
 			
 		} catch (InvalidFileFormatException e) {
 			e.printStackTrace();

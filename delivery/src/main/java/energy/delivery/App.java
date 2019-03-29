@@ -8,7 +8,8 @@ import energy.delivery.models.Trajet;
 import energy.delivery.service.ImportService;
 
 /**
- * Hello world!
+ *
+ * @author Julien Mugnier - Baptiste Rambaud
  *
  */
 public class App 

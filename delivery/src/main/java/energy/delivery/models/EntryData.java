@@ -12,15 +12,15 @@ public class EntryData {
 	List<List<Double>> timeMatrix;
 	List<List<Double>> distanceMatrix;
 	List<Client> clientList;
-	Vehicule vehiculeStat;
+	Vehicle vehicleStat;
 	
 	public EntryData(List<List<Double>> timeMatrix, List<List<Double>> distanceMatrix, List<Client> clientList,
-			Vehicule vehiculeStat) {
+			Vehicle vehicleStat) {
 		super();
 		this.timeMatrix = timeMatrix;
 		this.distanceMatrix = distanceMatrix;
 		this.clientList = clientList;
-		this.vehiculeStat = vehiculeStat;
+		this.vehicleStat = vehicleStat;
 	}
 	
 	public EntryData() {}
@@ -43,10 +43,10 @@ public class EntryData {
 	public void setClientList(List<Client> clientList) {
 		this.clientList = clientList;
 	}
-	public Vehicule getVehiculeStat() {
-		return vehiculeStat;
+	public Vehicle getVehicleStat() {
+		return vehicleStat;
 	}
-	public void setVehiculeStat(Vehicule vehiculeStat) {
-		this.vehiculeStat = vehiculeStat;
+	public void setVehicleStat(Vehicle vehicleStat) {
+		this.vehicleStat = vehicleStat;
 	}	
 }
