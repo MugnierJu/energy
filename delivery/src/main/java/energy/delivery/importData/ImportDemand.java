@@ -3,6 +3,8 @@ package energy.delivery.importData;
 import java.util.ArrayList;
 import java.util.List;
 
+import energy.delivery.models.TypeImport;
+
 /**
  * 
  * @author Julien Mugnier - Baptiste Rambaud
@@ -14,7 +16,7 @@ public class ImportDemand extends AbstractImportData {
 		super(path);
 	}
 
-	public Object importData() {
+	public Object importData(TypeImport typeImport) {
 		List<Integer> result = new ArrayList<Integer>();
 		
 		String[] values = getData().split(" ");

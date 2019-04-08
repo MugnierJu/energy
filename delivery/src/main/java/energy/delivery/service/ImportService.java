@@ -10,6 +10,7 @@ import energy.delivery.importData.ImportVehicle;
 import energy.delivery.models.Client;
 import energy.delivery.models.Coordinate;
 import energy.delivery.models.EntryData;
+import energy.delivery.models.TypeImport;
 import energy.delivery.models.Vehicle;
 
 /**
@@ -30,19 +31,19 @@ public class ImportService {
 		
 		//Import Dist matrix
 		ImportMatrix distMatrixImport = new ImportMatrix(resourcesPath+PropertiesService.getInstance().getProperty("distancesFile"));
-		data.setDistanceMatrix((List<List<Double>>) distMatrixImport.importData());
+		data.setDistanceMatrix((List<List<Double>>) distMatrixImport.importData(TypeImport.DISTANCES));
 		
 		//Import Time matrix
 		ImportMatrix timeMatrixImport = new ImportMatrix(resourcesPath+PropertiesService.getInstance().getProperty("timeFile"));
-		data.setTimeMatrix((List<List<Double>>) timeMatrixImport.importData());
+		data.setTimeMatrix((List<List<Double>>) timeMatrixImport.importData(TypeImport.TIMES));
 		
 		//Import Client
 		ImportCoord coordinateImport = new ImportCoord(resourcesPath+PropertiesService.getInstance().getProperty("coodinatesFile"));
 		ImportDemand demandImport = new ImportDemand(resourcesPath+PropertiesService.getInstance().getProperty("demandFile"));
 		
 		List<Client> clientList = new ArrayList<Client>();
-		List<Integer> demandeList = (List<Integer>) demandImport.importData();
-		List<Coordinate> coordinateList = (List<Coordinate>) coordinateImport.importData();
+		List<Integer> demandeList = (List<Integer>) demandImport.importData(TypeImport.DEMAND);
+		List<Coordinate> coordinateList = (List<Coordinate>) coordinateImport.importData(TypeImport.COORD);
 
 		for(int i = 0; i< coordinateList.size(); i++) {
 			//TODO : refacto this code to take the warehouses in account
@@ -58,7 +59,7 @@ public class ImportService {
 		
 		//Import vehicle
 		ImportVehicle importVehicle = new ImportVehicle(resourcesPath+PropertiesService.getInstance().getProperty("vehicleFile"));
-		data.setVehicleStat((Vehicle) importVehicle.importData());	
+		data.setVehicleStat((Vehicle) importVehicle.importData(TypeImport.VEHICLE));	
 		
 		return data;
 	}

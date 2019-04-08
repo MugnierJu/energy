@@ -7,6 +7,7 @@ import org.ini4j.Ini;
 import org.ini4j.IniPreferences;
 import org.ini4j.InvalidFileFormatException;
 
+import energy.delivery.models.TypeImport;
 import energy.delivery.models.Vehicle;
 
 /**
@@ -31,7 +32,7 @@ public class ImportVehicle extends AbstractImportData {
 		super(path);
 	}
 
-	public Object importData() {
+	public Object importData(TypeImport typeImport) {
 		
 		try {			
 			Ini ini = new Ini(new File(this.path));

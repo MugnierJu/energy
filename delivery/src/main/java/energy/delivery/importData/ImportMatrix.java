@@ -3,6 +3,8 @@ package energy.delivery.importData;
 import java.util.ArrayList;
 import java.util.List;
 
+import energy.delivery.models.TypeImport;
+
 /**
  * 
  * @author Julien Mugnier - Baptiste Rambaud
@@ -23,16 +25,22 @@ public class ImportMatrix extends AbstractImportData {
 		super(path);
 	}
 
-	public Object importData() {
-		
+	public Object importData(TypeImport typeImport) {
 		List<List<Double>> result = new ArrayList<List<Double>>();
-		String[] values = getData().split(" ");
+		
+		String[] values;
+		if(typeImport.equals(TypeImport.DISTANCES)){
+			values = getData().split("   ");
+		}
+		else{
+			values = getData().split(" ");
+		}
 		
 		int lineSize = (int) Math.sqrt(values.length);
 		for(int i = 0 ; i < lineSize; i++) {
 			List<Double> matrixLine = new ArrayList<Double>();
 			for(int j = i*lineSize; j < i*lineSize+lineSize; j++) {
-				matrixLine.add(Double.valueOf(values[j]));
+				matrixLine.add(Double.valueOf(values[j]));				
 			}
 			result.add(matrixLine);
 		}

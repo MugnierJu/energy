@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import energy.delivery.models.TypeImport;
+
 /**
  * 
  * @author Julien Mugnier - Baptiste Rambaud
@@ -19,7 +21,7 @@ public abstract class AbstractImportData {
 		data = getDataFromFile(path);
 	}
 	
-	abstract Object importData();
+	abstract Object importData(TypeImport typeImport);
 	
 	private String getDataFromFile(String path){
 		String filePath = path;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import energy.delivery.models.Coordinate;
+import energy.delivery.models.TypeImport;
 
 /**
  * 
@@ -16,7 +17,7 @@ public class ImportCoord extends AbstractImportData {
 		super(path);
 	}
 
-	public Object importData() {
+	public Object importData(TypeImport typeImport) {
 		List<Coordinate> result = new ArrayList<Coordinate>();
 		
 		String[] values = getData().split(",| ");		
