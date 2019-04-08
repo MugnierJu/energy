@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="energy.delivery.importData.ImportDataInterface"/>
+<fullyQualifiedTypeName name="energy.delivery.service.ImportService"/>
+<fullyQualifiedTypeName name="java.util.logging.Logger"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="java.lang.Long"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="energy.delivery.importData.ImportMatrix"/>
+<fullyQualifiedTypeName name="energy.delivery.importData.ImportCoord"/>
+<fullyQualifiedTypeName name="energy.delivery.service.PropertiesService"/>
+<fullyQualifiedTypeName name="energy.delivery.importData.ImportDemand"/>
+<fullyQualifiedTypeName name="org.ini4j.Ini"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="org.ini4j.IniPreferences"/>
+<fullyQualifiedTypeName name="energy.delivery.importData.ImportVehicle"/>
+<fullyQualifiedTypeName name="java.lang.VerifyError"/>
+<fullyQualifiedTypeName name="energy.delivery.models.Vehicule"/>
+<fullyQualifiedTypeName name="energy.delivery.heuristic.HeuristicInterface"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.util.Comparator"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="energy.delivery.comparator.ClientRequestComparator"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="energy.delivery.models.Delivery"/>
+<fullyQualifiedTypeName name="energy.delivery.models.Coordinate"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="java.lang.Double"/>
+<fullyQualifiedTypeName name="energy.delivery.models.Trajet"/>
+<fullyQualifiedTypeName name="energy.delivery.models.EntryData"/>
+<fullyQualifiedTypeName name="energy.delivery.models.Client"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="energy.delivery.heuristic.BasicHeuristic"/>
+<fullyQualifiedTypeName name="energy.delivery.heuristic.HeuristicUtils"/>
+</qualifiedTypeNameHistroy>
