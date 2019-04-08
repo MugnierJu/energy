@@ -7,7 +7,6 @@ import energy.delivery.comparator.ClientRequestComparator;
 import energy.delivery.models.Client;
 import energy.delivery.models.Delivery;
 import energy.delivery.models.EntryData;
-import energy.delivery.models.Trajet;
 
 /**
  * Simple Heuristic with only the size of the filling rate of the vehicles taking into account

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import energy.delivery.models.Client;
 import energy.delivery.models.Delivery;
 import energy.delivery.models.EntryData;
 import energy.delivery.service.PropertiesService;
