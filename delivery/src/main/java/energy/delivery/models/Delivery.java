@@ -14,12 +14,14 @@ public class Delivery {
 
 	double totalDistance;
 	double totalTime;
+	int totalDelivery;
 	List<Trajet> trajetList;
 	
 	public Delivery() {
 		trajetList = new ArrayList<Trajet>();
 		totalDistance = 0;
 		totalTime = 0;
+		totalDelivery= 0;
 	}
 
 	public double getTotalDistance() {
@@ -40,10 +42,14 @@ public class Delivery {
 	public void setTrajetList(List<Trajet> trajetList) {
 		this.trajetList = trajetList;
 	}
+	public int getTotalDelivery() {
+		return this.totalDelivery;
+	}
 	
 	public void addTrajet(Trajet trajet) {
 		this.trajetList.add(trajet);
 		this.totalDistance += trajet.distance;
-		this.totalTime += trajet.time;		
+		this.totalTime += trajet.time;	
+		this.totalDelivery += trajet.getDelivery();
 	}
 }

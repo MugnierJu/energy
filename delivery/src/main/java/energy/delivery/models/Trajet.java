@@ -11,11 +11,12 @@ public class Trajet {
 
 	double distance;
 	double time;
+	int delivery;
 	Coordinate departureCoordinate;
 	Coordinate arrivalCoordinate;
 	
-	public Trajet(double distance, double time, Coordinate departureCoordinate, Coordinate arrivalCoordinate) {
-		super();
+	public Trajet(double distance, double time, Coordinate departureCoordinate, Coordinate arrivalCoordinate, int delivery) {
+		this.delivery = delivery;
 		this.distance = distance;
 		this.time = time;
 		this.departureCoordinate = departureCoordinate;
@@ -53,4 +54,8 @@ public class Trajet {
 	public void setArrivalCoordinate(Coordinate arrivalCoordinate) {
 		this.arrivalCoordinate = arrivalCoordinate;
 	}	
+	
+	public int getDelivery() {
+		return this.delivery;
+	}
 }

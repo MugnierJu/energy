@@ -28,11 +28,11 @@ public class HeuristicUtils {
 		return time;
 	}	
 	
-	public static Trajet getNewTraject(Client departureClient, Client ArrivalClient, EntryData data) {
-		Double distance = HeuristicUtils.getDistanceFromMatrixPosition(departureClient, ArrivalClient, data);
-		Double time = HeuristicUtils.getTimeFromMatricPosition(departureClient, ArrivalClient, data);
+	public static Trajet getNewTraject(Client departureClient, Client arrivalClient, EntryData data) {
+		Double distance = HeuristicUtils.getDistanceFromMatrixPosition(departureClient, arrivalClient, data);
+		Double time = HeuristicUtils.getTimeFromMatricPosition(departureClient, arrivalClient, data);
 		
-		return new Trajet(distance, time, departureClient.getCoordinate(), ArrivalClient.getCoordinate());
+		return new Trajet(distance, time, departureClient.getCoordinate(), arrivalClient.getCoordinate(),arrivalClient.getRequest());
 	}
 	
 	
