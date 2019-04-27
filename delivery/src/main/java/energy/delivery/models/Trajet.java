@@ -14,13 +14,17 @@ public class Trajet {
 	int delivery;
 	Coordinate departureCoordinate;
 	Coordinate arrivalCoordinate;
+	Client arrivalClient;
+	Client departureClient;
 	
-	public Trajet(double distance, double time, Coordinate departureCoordinate, Coordinate arrivalCoordinate, int delivery) {
+	public Trajet(double distance, double time, Coordinate departureCoordinate, Coordinate arrivalCoordinate, int delivery,Client arrivalClient, Client departureClient) {
 		this.delivery = delivery;
 		this.distance = distance;
 		this.time = time;
 		this.departureCoordinate = departureCoordinate;
 		this.arrivalCoordinate = arrivalCoordinate;
+		this.arrivalClient = arrivalClient;
+		this.departureClient = departureClient;
 	}
 
 	public double getDistance() {
@@ -57,5 +61,13 @@ public class Trajet {
 	
 	public int getDelivery() {
 		return this.delivery;
+	}
+
+	public Client getArrivalClient() {
+		return arrivalClient;
+	}
+
+	public Client getDepartureClient() {
+		return departureClient;
 	}
 }

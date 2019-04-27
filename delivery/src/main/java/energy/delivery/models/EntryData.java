@@ -1,5 +1,6 @@
 package energy.delivery.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,6 +21,13 @@ public class EntryData {
 		this.timeMatrix = timeMatrix;
 		this.distanceMatrix = distanceMatrix;
 		this.clientList = clientList;
+		this.vehicleStat = vehicleStat;
+	}
+	
+	public EntryData(Vehicle vehicleStat) {
+		this.timeMatrix = new ArrayList<List<Double>>();
+		this.distanceMatrix = new ArrayList<List<Double>>();
+		this.clientList = new ArrayList<Client>();
 		this.vehicleStat = vehicleStat;
 	}
 	

@@ -33,5 +33,5 @@ public interface HeuristicInterface {
 	 * @param deliveryList
 	 * @param data
 	 */
-	public void buildHeuristic(List<Delivery> deliveryList,EntryData data);
+	public List<Delivery> buildHeuristic(EntryData data);
 }

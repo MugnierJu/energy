@@ -1,5 +1,7 @@
 package energy.delivery.heuristic;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import energy.delivery.models.Client;
@@ -32,9 +34,32 @@ public class HeuristicUtils {
 		Double distance = HeuristicUtils.getDistanceFromMatrixPosition(departureClient, arrivalClient, data);
 		Double time = HeuristicUtils.getTimeFromMatricPosition(departureClient, arrivalClient, data);
 		
-		return new Trajet(distance, time, departureClient.getCoordinate(), arrivalClient.getCoordinate(),arrivalClient.getRequest());
+		return new Trajet(distance, time, departureClient.getCoordinate(), arrivalClient.getCoordinate(),arrivalClient.getRequest(), arrivalClient, departureClient);
 	}
 	
+	
+
+	
+	/**
+	 * Retourne une liste de liste de client (une liste de tous les clients dans l'ordre sans dépots)
+	 * @param deliveryList
+	 * @return
+	 */
+	public static List<Client> getClientListsFromDeliveryList(List<Delivery> deliveryList) {
+		List<Client> clientList = new ArrayList<Client>();
+		for(Delivery delivery : deliveryList) {
+			for(Trajet trajet : delivery.getTrajetList()) {
+				if(!trajet.getArrivalClient().isWarhouse()) {
+					clientList.add(trajet.getArrivalClient());
+				}
+			}
+		}
+		return clientList;
+	}
+	
+
+/**------------------------- EVALUATION DE LA SOLUTION -----------------------------**/
+
 	
 	/**
 	 * Evaluation function for the heuristic
@@ -84,10 +109,11 @@ public class HeuristicUtils {
 		float time = 0;
 		boolean newVehicle = false;
 		float timeForAday = getTimeForADay(data);
-		for(Delivery delivery : deliveryList) {
+		for(Iterator<Delivery> iterator = deliveryList.iterator(); iterator.hasNext();) {
+			Delivery delivery = iterator.next();
 			if(delivery.getTotalTime()+time < timeForAday) {
 				time += delivery.getTotalTime();
-				deliveryList.remove(delivery);
+				iterator.remove();
 				newVehicle = true;
 			}
 		}
@@ -102,7 +128,6 @@ public class HeuristicUtils {
 	public static float getTimeForADay(EntryData data) {
 		return data.getVehicleStat().getEnd_time() - data.getVehicleStat().getStart_time();
 	}
-	
 	
 	public static int getWarehouseIndex(EntryData data) throws Exception{
 		for(int i = 0; i< data.getClientList().size(); i++) {

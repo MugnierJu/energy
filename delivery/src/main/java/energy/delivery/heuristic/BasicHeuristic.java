@@ -99,5 +99,10 @@ public class BasicHeuristic implements HeuristicInterface {
 		}
 		return;
 	}
+
+	public List<Delivery> buildHeuristic(EntryData data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
