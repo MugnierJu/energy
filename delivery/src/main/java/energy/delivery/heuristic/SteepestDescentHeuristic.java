@@ -10,7 +10,6 @@ import energy.delivery.comparator.ClientRequestComparator;
 import energy.delivery.models.Client;
 import energy.delivery.models.Delivery;
 import energy.delivery.models.EntryData;
-import energy.delivery.models.Trajet;
 import energy.delivery.service.PropertiesService;
 
 /**
@@ -76,20 +75,17 @@ public class SteepestDescentHeuristic implements HeuristicInterface {
 			//On trouve un premier voisinage;
 			List<List<Delivery>> neighbours = getExchangeCloseOneNeighbours(deliveryList, data);
 			
-			
-			
 			//On trouve le meilleur voisin
 			int index = getBestNeighbour(neighbours, data);
 			float bestScore = HeuristicUtils.evaluate(neighbours.get(index), 0, data);	
 			
-			//On itère jusqu'a trouver ce que le score n'évolue plus
+			//On itère jusqu'a ce que le score n'évolue plus
 			float newScore = -1;
 			int newIndex = -1;
 			List<List<Delivery>> newNeighbours = new ArrayList<List<Delivery>>();
 			boolean isFinished = false;
 			
 			while(!isFinished){
-				//TODO pb ici newNeighbours est vide
 				newNeighbours = getExchangeCloseOneNeighbours(neighbours.get(index), data);
 				newIndex = getBestNeighbour(newNeighbours, data);
 				newScore = HeuristicUtils.evaluate(newNeighbours.get(newIndex), 0, data);

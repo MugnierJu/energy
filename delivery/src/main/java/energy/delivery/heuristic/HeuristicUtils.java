@@ -70,14 +70,15 @@ public class HeuristicUtils {
 	 * @return
 	 */
 	public static float evaluate(List<Delivery> deliveryList,float brokenConstraint, EntryData data) {
+		List<Delivery> toBeTestedDeliveryList = new ArrayList<Delivery>(deliveryList);
 		float totalTime = 0;
 		float totalDist = 0;
-		for(Delivery delivery : deliveryList) {
+		for(Delivery delivery : toBeTestedDeliveryList) {
 			totalDist += delivery.getTotalDistance();
 			totalTime += delivery.getTotalTime();
 		}
 		
-		int nbVehicle = getVehicleNumber(deliveryList, data);
+		int nbVehicle = getVehicleNumber(toBeTestedDeliveryList, data);
 		
 		return totalTime+(totalDist/600)+(nbVehicle-1)*500+brokenConstraint*50000;
 	}
