@@ -3,22 +3,25 @@
 1) Pour faire fonctionner notre projet, et notamment le front, il est nécessaire de télécharger wampserver :
 http://www.wampserver.com/
 
-2) Ensuite il faut copier le dossier energyFront de notre projet dans le dossier suivant : _C:\wamp64\www_
+2) Ensuite il faut copier le dossier energyFront de notre projet dans le dossier suivant : **C:\wamp64\www**
 
 3) Après avoir lancé le serveur local de wamp, notre carte est visible à l'adresse suivante http://localhost/energyFront
 
-# Explicaiton du fonctionnement
+# Explication du fonctionnement
 
 Notre projet marche de la manière suivante :
 - Tout d'abord il faut choisir quelle heuristique on va utiliser. Ce choix se fait dans le App.Java en décommentant les lignes de l'heuristique choisit.
 
-- Après avoir lancé le App.java, un fichier result.json a été crée dans le dossier C:\wamp64\www\energyFront
+- Après avoir lancé le App.java, un fichier result.json a été crée dans le dossier **C:\wamp64\www\energyFront**
 
 - Enfin il faut recharger la page qui affiche les résultats
 
 # TP - Livraison avec des véhicules électriques
 
-Réponses 
+== 
+Réponses aux questions
+
+1) 
 
 # Système d'information energie
 
