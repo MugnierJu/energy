@@ -42,7 +42,7 @@ La taille de ces solutions est n-1.
 Lorsque l'on parcourt toutes les solutions, la solution la plus optimale est non déterministe et cherche la meilleure solution générée.
 
 
-# Système d'information energie
+# Premières heuristiques
 
 Seule la première heuristique est implémentée comme suit :
 
@@ -57,9 +57,4 @@ On ajoute à cette demande la quantité de la demande tab[n-2] dans un variable 
 Si tab[n-1] + tab[n-2] > C on ne retient pas n-2 et on itère pour les n-x suivants. Sinon V = R et on passe à n-3
 On s'arrête quand la somme est égale à C ou que l’on a parcouru tout le tableau
 
-
-
-Les données fournies son formattées et sont présentes sous energy/delivery/resources/
-
-Aucun affichage n'est disponible pour le moment. Néanmoins, il est possible d'accéder à toutes les données en sortie depuis le main (App.java).
 
