@@ -22,7 +22,6 @@ Tout le back tourne en Java et le résultat de la fonction d'évaluation est vis
 
 # TP - Livraison avec des véhicules électriques
 
-== 
 Réponses aux questions
 
 1) Nous avons 3 voisinages, tous de taille n-1. Ceci sont contenus comme suit :
