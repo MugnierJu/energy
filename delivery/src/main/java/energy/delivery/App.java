@@ -33,7 +33,6 @@ public class App
 	        // Non déterministe - Toutes les solution parcoures - on prend la meilleure
 	        HeuristicInterface heuristicUndeterministicAllDataBrosed = new XVariationHeuristic();
 	        List<Delivery> deliveryList = heuristicUndeterministicAllDataBrosed.process(ImportService.getData());
-
 	        
 	        // Déterministe - Toutes les solution parcoures - on prend la meilleure
 //	        XVariationHeuristicDeterministic heuristicDeterministicAllDataBrosed = new XVariationHeuristicDeterministic();
@@ -44,6 +43,7 @@ public class App
 //	        List<Delivery> deliveryList = heuristicFirstBest.process(ImportService.getData());
     		
     		// Déterministe - On prend la première meilleur solution
+
     		//XVariationHeuristicDeterministicFirstBest heuristicDeteministicFirstBest = new XVariationHeuristicDeterministicFirstBest();
 	        //List<Delivery> deliveryList = heuristicDeteministicFirstBest.process(ImportService.getData());
 	       
@@ -56,6 +56,7 @@ public class App
 	        
 	        int i=0;
 	        for(Delivery delivery : deliveryList) {
+	        	delivery.generateTour();
 	        	System.out.println("Livraison "+i);
 	        	i++;
 	        	for(Trajet t: delivery.getTrajetList()) {

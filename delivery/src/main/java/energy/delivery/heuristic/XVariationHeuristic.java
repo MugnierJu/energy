@@ -236,6 +236,13 @@ private int getBestNeighbour(List<List<Delivery>> neighbours,EntryData data) {
 			return false;
 		}
 		
+		if(!client2.isWarhouse()) {
+			double deliveryTime = (5*60.0)+(10*client2.getRequest());
+			if(delivery.getTotalTime() +deliveryTime > HeuristicUtils.getTimeForADay(data)) {
+				return false;
+			}
+		}
+		
 		return true;
 	}
 	

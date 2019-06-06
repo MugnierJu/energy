@@ -80,11 +80,11 @@ public class HeuristicUtils {
 		
 		int nbVehicle = getVehicleNumber(toBeTestedDeliveryList, data);
 		
-		return totalTime+(totalDist/600)+(nbVehicle-1)*500+brokenConstraint*50000;
+		return totalDist+(totalTime/600)+(nbVehicle-1)*500+brokenConstraint*50000;
 	}
 	
 	
-	private static int getVehicleNumber(List<Delivery> deliveryList, EntryData data) {
+	static int getVehicleNumber(List<Delivery> deliveryList, EntryData data) {
 		int nbVehicle = 0;
 		
 		while(deliveryList.size()>0) {
@@ -106,7 +106,7 @@ public class HeuristicUtils {
 	 * @param data
 	 * @return
 	 */
-	private static boolean getAVehicle(List<Delivery> deliveryList, EntryData data) {
+	static boolean getAVehicle(List<Delivery> deliveryList, EntryData data) {
 		float time = 0;
 		boolean newVehicle = false;
 		float timeForAday = getTimeForADay(data);
@@ -138,4 +138,5 @@ public class HeuristicUtils {
 		}
 		throw new Exception("No warehouse");
 	}
+	
 }

@@ -279,6 +279,7 @@ private int getBestNeighbour(List<List<Delivery>> neighbours,EntryData data) {
 				throw new Exception("Unable to process the algorithm");
 			}
 		}
+		entryData = data;
 		return deliveryList;
 	}
 }

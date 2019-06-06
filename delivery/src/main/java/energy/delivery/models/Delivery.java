@@ -16,6 +16,7 @@ public class Delivery {
 	double totalTime;
 	int totalDelivery;
 	List<Trajet> trajetList;
+	List<String> tour;
 	
 	public Delivery() {
 		trajetList = new ArrayList<Trajet>();
@@ -49,7 +50,31 @@ public class Delivery {
 	public void addTrajet(Trajet trajet) {
 		this.trajetList.add(trajet);
 		this.totalDistance += trajet.distance;
-		this.totalTime += trajet.time;	
+		this.totalTime += trajet.time;
+		
+		//Ajout des contraintes
+		double deliveryTime = 0;
+		if(!trajet.getDepartureClient().isWarehouse) {
+			deliveryTime = (5*60.0)+(10*trajet.getDepartureClient().getRequest());
+		}
+		this.totalTime += deliveryTime;
+		
 		this.totalDelivery += trajet.getDelivery();
+	}
+	
+	/**
+	 * Utiliser cette méthode uniquement lorsque le delivery est terminer
+	 */
+	public void generateTour() {
+		tour = new ArrayList<String>();
+		
+		for(Trajet trajet : trajetList) {
+			if(trajet.getDepartureClient().isWarehouse) {
+				tour.add("R");
+			}else {
+				tour.add(String.valueOf(trajet.getDepartureClient().getMatrixIndex()));
+			}
+		}
+		tour.add("R");
 	}
 }
