@@ -47,24 +47,19 @@ public class App
     		//XVariationHeuristicDeterministicFirstBest heuristicDeteministicFirstBest = new XVariationHeuristicDeterministicFirstBest();
 	        //List<Delivery> deliveryList = heuristicDeteministicFirstBest.process(ImportService.getData());
 	       
-	        Gson gson = new Gson();
-	        String json ="";
-	        FileWriter fw=new FileWriter("C:\\wamp64\\www\\energy\\result.json"); 
-        	json = gson.toJson(deliveryList);
-        	fw.write(json);
-        	fw.close();
 	        
 	        int i=0;
 	        for(Delivery delivery : deliveryList) {
 	        	delivery.generateTour();
-	        	System.out.println("Livraison "+i);
 	        	i++;
-	        	for(Trajet t: delivery.getTrajetList()) {
-	        		System.out.println(t.getArrivalClient().getRequest());   
-	                
-	        				
-	        	}
 	        }
+	        Gson gson = new Gson();
+	        String json ="";
+	        FileWriter fw=new FileWriter("C:\\wamp64\\www\\energyFront\\result.json"); 
+        	json = gson.toJson(deliveryList);
+        	fw.write(json);
+        	fw.close();
+	        
 	        System.out.println(HeuristicUtils.evaluate(deliveryList, 0, ImportService.getData()));
 		} catch (Exception e) {
 			e.printStackTrace();
