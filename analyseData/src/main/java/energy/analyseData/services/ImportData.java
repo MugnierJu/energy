@@ -26,10 +26,15 @@ public class ImportData {
 		List<File> fileList = getFiles(rootFolder);
 		filterFiles(fileList);
 		
-		List<Data> dataList = getData(fileList.get(0));
-		
-		DataBaseService.getInstance();
-		
+		for(File file : fileList) {		
+			List<Data> dataList = getData(file);
+			DataBaseService.getInstance().insertData(dataList, getHouseName(file));
+		}
+	}
+	
+	private static String getHouseName(File file) {
+		String[] values = file.getName().split("-");
+		return values[0];
 	}
 	
 	/**
