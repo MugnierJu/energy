@@ -31,12 +31,12 @@ public class App
     	try {
 	        
 	        // Non déterministe - Toutes les solution parcoures - on prend la meilleure
-	        HeuristicInterface heuristicUndeterministicAllDataBrosed = new XVariationHeuristic();
-	        List<Delivery> deliveryList = heuristicUndeterministicAllDataBrosed.process(ImportService.getData());
+//	        HeuristicInterface heuristicUndeterministicAllDataBrosed = new XVariationHeuristic();
+//	        List<Delivery> deliveryList = heuristicUndeterministicAllDataBrosed.process(ImportService.getData());
 	        
 	        // Déterministe - Toutes les solution parcoures - on prend la meilleure
-//	        XVariationHeuristicDeterministic heuristicDeterministicAllDataBrosed = new XVariationHeuristicDeterministic();
-//	        List<Delivery> deliveryList = heuristicDeterministicAllDataBrosed.process(ImportService.getData());
+	        XVariationHeuristicDeterministic heuristicDeterministicAllDataBrosed = new XVariationHeuristicDeterministic();
+	        List<Delivery> deliveryList = heuristicDeterministicAllDataBrosed.process(ImportService.getData());
 
 	        // Non déterministe - On prend la première meilleur solution
 //    		XVariationHeuristicFirstBest heuristicFirstBest = new XVariationHeuristicFirstBest();
@@ -49,10 +49,7 @@ public class App
 	       
 	        
 	        int i=0;
-	        for(Delivery delivery : deliveryList) {
-	        	delivery.generateTour();
-	        	i++;
-	        }
+	        
 	        Gson gson = new Gson();
 	        String json ="";
 	        FileWriter fw=new FileWriter("C:\\wamp64\\www\\energyFront\\result.json"); 
@@ -60,7 +57,8 @@ public class App
         	fw.write(json);
         	fw.close();
 	        
-	        System.out.println(HeuristicUtils.evaluate(deliveryList, 0, ImportService.getData()));
+        	
+	        System.out.println("Score : "+HeuristicUtils.evaluate(deliveryList, 0, ImportService.getData()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

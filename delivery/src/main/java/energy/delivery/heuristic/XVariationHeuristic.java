@@ -138,7 +138,6 @@ private int getBestNeighbour(List<List<Delivery>> neighbours,EntryData data) {
 
 	
 	/**
-	 * On construit un voisinage tel que un voisinage = S0 avec pour chaque élément 
 	 * Cette fonction de construit que des voisinages respectant les contraintes
 	 * @param deliveryList
 	 * @param data
@@ -159,14 +158,14 @@ private int getBestNeighbour(List<List<Delivery>> neighbours,EntryData data) {
 			double smallestDistance = -1;
 			Boolean asChanged = false;
 			for(int j = 0;j < clientList.size();j++) {
-				if(!alreadySwappedClient.contains(j)) {
-					double dist = data.getDistanceMatrix().get(i).get(j);
+				if(!alreadySwappedClient.contains(j) && !alreadySwappedClient.contains(i)) {
+					double dist = data.getClientList().get(i).getCoordinate().getX() - data.getClientList().get(j).getCoordinate().getX();
 					if(smallestDistance == -1) {
-						smallestDistance = data.getDistanceMatrix().get(i).get(j);
+						smallestDistance = dist;
 						clientIndex = j;
 						asChanged = true;
 					}
-					if(dist < smallestDistance && smallestDistance != 0) {
+					if(dist < smallestDistance && dist > 0) {
 						smallestDistance = dist;
 						clientIndex = j;
 						asChanged = true;
@@ -180,6 +179,7 @@ private int getBestNeighbour(List<List<Delivery>> neighbours,EntryData data) {
 				alreadySwappedClient.add(clientIndex);
 				
 				neighbours.add(buildDeliveryList(new ArrayList<Client>(newClientList),data));
+				asChanged = false;
 			}
 		}
 		
