@@ -10,13 +10,15 @@ http://www.wampserver.com/
 # Explication du fonctionnement
 
 Notre projet marche de la manière suivante :
-- Tout d'abord il faut choisir quelle heuristique on va utiliser. Ce choix se fait dans le App.Java en décommentant les lignes de l'heuristique choisit.
+- Tout d'abord il faut choisir quelle heuristique on va utiliser. Ce choix se fait dans le App.Java en décommentant les lignes de l'heuristique choisi.
 
 - Après avoir lancé le App.java, un fichier result.json a été crée dans le dossier **C:\wamp64\www\energyFront**
 
 - Enfin il faut recharger la page qui affiche les résultats
 
 Un fichier de configuration **config.properties** permet de choisir avec quelle ressource nous allons travailler.
+
+Tout le back tourne en Java et le résultat de la fonction d'évaluation est visible dans la console en Java.
 
 # TP - Livraison avec des véhicules électriques
 
