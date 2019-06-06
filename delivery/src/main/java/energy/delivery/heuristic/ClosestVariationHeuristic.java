@@ -18,13 +18,13 @@ import energy.delivery.service.PropertiesService;
  * 
  *
  */
-public class XVariationHeuristicFirstBest implements HeuristicInterface {
+public class ClosestVariationHeuristic implements HeuristicInterface {
 	
 	List<Client> warehouses;
 	private static Logger logger = Logger.getLogger(PropertiesService.class);
 	EntryData entryData;
 
-	public XVariationHeuristicFirstBest() {
+	public ClosestVariationHeuristic() {
 		warehouses = new ArrayList<Client>();
 	}
 
@@ -87,20 +87,14 @@ public class XVariationHeuristicFirstBest implements HeuristicInterface {
 			boolean isFinished = false;
 			
 			while(!isFinished){
-				
-				boolean hasUpdated = false;
-				int listIndex = 0;
-				for(List<Delivery> neighbour : neighbours) {
-					float score = HeuristicUtils.evaluate( new ArrayList<Delivery>(neighbour), 0,data);
-					if(score < bestScore) {
-						index = listIndex;
-						bestScore = score;
-						hasUpdated = true;
-						break;
-					}
-					listIndex++;
-				}
-				if(!hasUpdated){
+				newNeighbours = getExchangeSmallestXNeighbours(neighbours.get(index), data);
+				newIndex = getBestNeighbour(newNeighbours, data);
+				newScore = HeuristicUtils.evaluate(newNeighbours.get(newIndex), 0, data);
+				if(newScore < bestScore) {
+					neighbours = newNeighbours;
+					index = newIndex;
+					bestScore = newScore;
+				}else {
 					isFinished = true;
 				}
 			}
@@ -141,6 +135,7 @@ private int getBestNeighbour(List<List<Delivery>> neighbours,EntryData data) {
 	
 	
 /**------------------------- VOISINAGE -----------------------------**/
+
 	
 	/**
 	 * On construit un voisinage tel que un voisinage = S0 avec pour chaque élément 
@@ -165,9 +160,9 @@ private int getBestNeighbour(List<List<Delivery>> neighbours,EntryData data) {
 			Boolean asChanged = false;
 			for(int j = 0;j < clientList.size();j++) {
 				if(!alreadySwappedClient.contains(j) && !alreadySwappedClient.contains(i)) {
-					double dist = data.getClientList().get(i).getCoordinate().getX() - data.getClientList().get(j).getCoordinate().getX();
+					double dist = data.getDistanceMatrix().get(i).get(j);
 					if(smallestDistance == -1) {
-						smallestDistance = dist;
+						smallestDistance = data.getDistanceMatrix().get(i).get(j);
 						clientIndex = j;
 						asChanged = true;
 					}

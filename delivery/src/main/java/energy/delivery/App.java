@@ -31,12 +31,12 @@ public class App
     	try {
 	        
 	        // Non déterministe - Toutes les solution parcoures - on prend la meilleure
-	        HeuristicInterface heuristicUndeterministicAllDataBrosed = new XVariationHeuristic();
-	        List<Delivery> deliveryList = heuristicUndeterministicAllDataBrosed.process(ImportService.getData());
+//	        HeuristicInterface heuristicUndeterministicAllDataBrosed = new XVariationHeuristic();
+//	        List<Delivery> deliveryList = heuristicUndeterministicAllDataBrosed.process(ImportService.getData());
 	        
 	        // Déterministe - Toutes les solution parcoures - on prend la meilleure
-//	        XVariationHeuristicDeterministic heuristicDeterministicAllDataBrosed = new XVariationHeuristicDeterministic();
-//	        List<Delivery> deliveryList = heuristicDeterministicAllDataBrosed.process(ImportService.getData());
+	        XVariationHeuristicDeterministic heuristicDeterministicAllDataBrosed = new XVariationHeuristicDeterministic();
+	        List<Delivery> deliveryList = heuristicDeterministicAllDataBrosed.process(ImportService.getData());
 
 	        // Non déterministe - On prend la première meilleur solution
 //    		XVariationHeuristicFirstBest heuristicFirstBest = new XVariationHeuristicFirstBest();
@@ -49,7 +49,7 @@ public class App
 	       
 	        Gson gson = new Gson();
 	        String json ="";
-	        FileWriter fw=new FileWriter("C:\\wamp64\\www\\energy\\result.json"); 
+	        FileWriter fw=new FileWriter("C:\\wamp64\\www\\energyFront\\result.json"); 
         	json = gson.toJson(deliveryList);
         	fw.write(json);
         	fw.close();
@@ -60,9 +60,7 @@ public class App
 	        	System.out.println("Livraison "+i);
 	        	i++;
 	        	for(Trajet t: delivery.getTrajetList()) {
-	        		System.out.println(t.getArrivalClient().getRequest());   
-	                
-	        				
+	        		System.out.println(t.getArrivalClient().getCoordinate().getX());
 	        	}
 	        }
 	        System.out.println(HeuristicUtils.evaluate(deliveryList, 0, ImportService.getData()));

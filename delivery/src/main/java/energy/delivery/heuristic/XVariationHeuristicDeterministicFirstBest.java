@@ -164,14 +164,14 @@ private int getBestNeighbour(List<List<Delivery>> neighbours,EntryData data) {
 			double smallestDistance = -1;
 			Boolean asChanged = false;
 			for(int j = 0;j < clientList.size();j++) {
-				if(!alreadySwappedClient.contains(j)) {
-					double dist = data.getDistanceMatrix().get(i).get(j);
+				if(!alreadySwappedClient.contains(j) && !alreadySwappedClient.contains(i)) {
+					double dist = data.getClientList().get(i).getCoordinate().getX() - data.getClientList().get(j).getCoordinate().getX();
 					if(smallestDistance == -1) {
-						smallestDistance = data.getDistanceMatrix().get(i).get(j);
+						smallestDistance = dist;
 						clientIndex = j;
 						asChanged = true;
 					}
-					if(dist < smallestDistance && smallestDistance != 0) {
+					if(dist < smallestDistance && dist > 0) {
 						smallestDistance = dist;
 						clientIndex = j;
 						asChanged = true;
@@ -185,6 +185,7 @@ private int getBestNeighbour(List<List<Delivery>> neighbours,EntryData data) {
 				alreadySwappedClient.add(clientIndex);
 				
 				neighbours.add(buildDeliveryList(new ArrayList<Client>(newClientList),data));
+				asChanged = false;
 			}
 		}
 		
@@ -239,6 +240,13 @@ private int getBestNeighbour(List<List<Delivery>> neighbours,EntryData data) {
 		Double distToWarehouse = HeuristicUtils.getDistanceFromMatrixPosition(client2, data.getClientList().get(warehouseIndex), data);
 		if(newDist+distToWarehouse+delivery.getTotalDistance() > data.getVehicleStat().getMax_dist()) {
 			return false;
+		}
+		
+		if(!client2.isWarhouse()) {
+			double deliveryTime = (5*60.0)+(10*client2.getRequest());
+			if(delivery.getTotalTime() +deliveryTime > HeuristicUtils.getTimeForADay(data)) {
+				return false;
+			}
 		}
 		
 		return true;

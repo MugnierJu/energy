@@ -138,5 +138,4 @@ public class HeuristicUtils {
 		}
 		throw new Exception("No warehouse");
 	}
-	
 }
