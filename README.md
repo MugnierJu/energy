@@ -16,12 +16,30 @@ Notre projet marche de la manière suivante :
 
 - Enfin il faut recharger la page qui affiche les résultats
 
+Un fichier de configuration **config.properties** permet de choisir avec quelle ressource nous allons travailler.
+
 # TP - Livraison avec des véhicules électriques
 
 == 
 Réponses aux questions
 
-1) 
+1) Nous avons 3 voisinages, tous de taille n-1. Ceci sont contenus comme suit :
+  - La classe **SteepesDescentHeuristic**. Cette classe crée une liste de solutions en inversant i et i+1
+  - La classe **XVariationHeuristic**. Cette classe crée une liste de solutions en échangeant i+1 avec le client dont la coordonnée x est la plus proche de i.
+  - La classe **ClosestVariationHeuristic**. Cette classe crée une liste de solutions en échangeant i+1 avec le client ayant la plus courte distance à i.
+  
+Dans chacune des classes, la fonction **areConstraintsRespected** assure que toutes les contraintes soient respectées. Il n'y a donc aucune solution non réalisable dans ces heuristiques.
+La taille de ces solutions est n-1.
+
+
+2) et 3) Nous avons décliné la classe **XVariationHeuristic** en 4 classes :
+  - XVariationHeuristic : Non déterministe et cherche la meilleure des solutions générées.
+  - XVariationHeuristicDeterministic : Déterministe et cherche la meilleure des solutions générées.
+  - XVariationHeuristicDeterministicFirstBest : Déterministe et cherche la première meilleure solution trouvée.
+  - XVariationHeuristicFirstBest : Non déterministe et cherche la première meilleure solution trouvée.
+  
+Lorsque l'on parcourt toutes les solutions, la solution la plus optimale est non déterministe et cherche la meilleure solution générée.
+
 
 # Système d'information energie
 
