@@ -1,0 +1,420 @@
+[
+
+    {
+        "totalDistance": 20.732,
+        "totalTime": 1862.0,
+        "totalDelivery": 99,
+        "trajetList": [
+            {
+                "distance": 1.152,
+                "time": 103.0,
+                "delivery": 8,
+                "departureCoordinate": {
+                    "x": 45.7696884,
+                    "y": 4.8836497
+                },
+                "arrivalCoordinate": {
+                    "x": 45.74207,
+                    "y": 4.854763
+                },
+                "arrivalClient": {
+                    "coordinate": {
+                        "x": 45.74207,
+                        "y": 4.854763
+                    },
+                    "request": 8,
+                    "matrixIndex": 0,
+                    "isWarehouse": false
+                },
+                "departureClient": {
+                    "coordinate": {
+                        "x": 45.7696884,
+                        "y": 4.8836497
+                    },
+                    "request": -1,
+                    "matrixIndex": 40,
+                    "isWarehouse": true
+                }
+            },
+            {
+                "distance": 2.636,
+                "time": 237.0,
+                "delivery": 7,
+                "departureCoordinate": {
+                    "x": 45.74207,
+                    "y": 4.854763
+                },
+                "arrivalCoordinate": {
+                    "x": 45.74074,
+                    "y": 4.890051
+                },
+                "arrivalClient": {
+                    "coordinate": {
+                        "x": 45.74074,
+                        "y": 4.890051
+                    },
+                    "request": 7,
+                    "matrixIndex": 35,
+                    "isWarehouse": false
+                },
+                "departureClient": {
+                    "coordinate": {
+                        "x": 45.74207,
+                        "y": 4.854763
+                    },
+                    "request": 8,
+                    "matrixIndex": 0,
+                    "isWarehouse": false
+                }
+            },
+            {
+                "distance": 3.547,
+                "time": 319.0,
+                "delivery": 16,
+                "departureCoordinate": {
+                    "x": 45.74074,
+                    "y": 4.890051
+                },
+                "arrivalCoordinate": {
+                    "x": 45.737915,
+                    "y": 4.88944
+                },
+                "arrivalClient": {
+                    "coordinate": {
+                        "x": 45.737915,
+                        "y": 4.88944
+                    },
+                    "request": 16,
+                    "matrixIndex": 5,
+                    "isWarehouse": false
+                },
+                "departureClient": {
+                    "coordinate": {
+                        "x": 45.74074,
+                        "y": 4.890051
+                    },
+                    "request": 7,
+                    "matrixIndex": 35,
+                    "isWarehouse": false
+                }
+            },
+            {
+                "distance": 2.98,
+                "time": 268.0,
+                "delivery": 16,
+                "departureCoordinate": {
+                    "x": 45.737915,
+                    "y": 4.88944
+                },
+                "arrivalCoordinate": {
+                    "x": 45.759024,
+                    "y": 4.894361
+                },
+                "arrivalClient": {
+                    "coordinate": {
+                        "x": 45.759024,
+                        "y": 4.894361
+                    },
+                    "request": 16,
+                    "matrixIndex": 32,
+                    "isWarehouse": false
+                },
+                "departureClient": {
+                    "coordinate": {
+                        "x": 45.737915,
+                        "y": 4.88944
+                    },
+                    "request": 16,
+                    "matrixIndex": 5,
+                    "isWarehouse": false
+                }
+            },
+            {
+                "distance": 2.617,
+                "time": 235.0,
+                "delivery": 7,
+                "departureCoordinate": {
+                    "x": 45.759024,
+                    "y": 4.894361
+                },
+                "arrivalCoordinate": {
+                    "x": 45.73919,
+                    "y": 4.868536
+                },
+                "arrivalClient": {
+                    "coordinate": {
+                        "x": 45.73919,
+                        "y": 4.868536
+                    },
+                    "request": 7,
+                    "matrixIndex": 15,
+                    "isWarehouse": false
+                },
+                "departureClient": {
+                    "coordinate": {
+                        "x": 45.759024,
+                        "y": 4.894361
+                    },
+                    "request": 16,
+                    "matrixIndex": 32,
+                    "isWarehouse": false
+                }
+            },
+            {
+                "distance": 3.506,
+                "time": 315.0,
+                "delivery": 24,
+                "departureCoordinate": {
+                    "x": 45.73919,
+                    "y": 4.868536
+                },
+                "arrivalCoordinate": {
+                    "x": 45.76053,
+                    "y": 4.893264
+                },
+                "arrivalClient": {
+                    "coordinate": {
+                        "x": 45.76053,
+                        "y": 4.893264
+                    },
+                    "request": 24,
+                    "matrixIndex": 11,
+                    "isWarehouse": false
+                },
+                "departureClient": {
+                    "coordinate": {
+                        "x": 45.73919,
+                        "y": 4.868536
+                    },
+                    "request": 7,
+                    "matrixIndex": 15,
+                    "isWarehouse": false
+                }
+            },
+            {
+                "distance": 0.787,
+                "time": 70.0,
+                "delivery": 12,
+                "departureCoordinate": {
+                    "x": 45.76053,
+                    "y": 4.893264
+                },
+                "arrivalCoordinate": {
+                    "x": 45.735437,
+                    "y": 4.89884
+                },
+                "arrivalClient": {
+                    "coordinate": {
+                        "x": 45.735437,
+                        "y": 4.89884
+                    },
+                    "request": 12,
+                    "matrixIndex": 22,
+                    "isWarehouse": false
+                },
+                "departureClient": {
+                    "coordinate": {
+                        "x": 45.76053,
+                        "y": 4.893264
+                    },
+                    "request": 24,
+                    "matrixIndex": 11,
+                    "isWarehouse": false
+                }
+            },
+            {
+                "distance": 2.961,
+                "time": 266.0,
+                "delivery": 10,
+                "departureCoordinate": {
+                    "x": 45.735437,
+                    "y": 4.89884
+                },
+                "arrivalCoordinate": {
+                    "x": 45.751244,
+                    "y": 4.88483
+                },
+                "arrivalClient": {
+                    "coordinate": {
+                        "x": 45.751244,
+                        "y": 4.88483
+                    },
+                    "request": 10,
+                    "matrixIndex": 23,
+                    "isWarehouse": false
+                },
+                "departureClient": {
+                    "coordinate": {
+                        "x": 45.735437,
+                        "y": 4.89884
+                    },
+                    "request": 12,
+                    "matrixIndex": 22,
+                    "isWarehouse": false
+                }
+            },
+            {
+                "distance": 0.546,
+                "time": 49.0,
+                "delivery": -1,
+                "departureCoordinate": {
+                    "x": 45.751244,
+                    "y": 4.88483
+                },
+                "arrivalCoordinate": {
+                    "x": 45.7696884,
+                    "y": 4.8836497
+                },
+                "arrivalClient": {
+                    "coordinate": {
+                        "x": 45.7696884,
+                        "y": 4.8836497
+                    },
+                    "request": -1,
+                    "matrixIndex": 40,
+                    "isWarehouse": true
+                },
+                "departureClient": {
+                    "coordinate": {
+                        "x": 45.751244,
+                        "y": 4.88483
+                    },
+                    "request": 10,
+                    "matrixIndex": 23,
+                    "isWarehouse": false
+                }
+            }
+        ]
+    },
+    {
+        "totalDistance": 8.997,
+        "totalTime": 808.0,
+        "totalDelivery": 62,
+        "trajetList": [
+            {
+                "distance": 3.684,
+                "time": 331.0,
+                "delivery": 19,
+                "departureCoordinate": {
+                    "x": 45.7696884,
+                    "y": 4.8836497
+                },
+                "arrivalCoordinate": {
+                    "x": 45.731548,
+                    "y": 4.890373
+                },
+                "arrivalClient": {
+                    "coordinate": {
+                        "x": 45.731548,
+                        "y": 4.890373
+                    },
+                    "request": 19,
+                    "matrixIndex": 27,
+                    "isWarehouse": false
+                },
+                "departureClient": {
+                    "coordinate": {
+                        "x": 45.7696884,
+                        "y": 4.8836497
+                    },
+                    "request": -1,
+                    "matrixIndex": 40,
+                    "isWarehouse": true
+                }
+            },
+            {
+                "distance": 1.2,
+                "time": 108.0,
+                "delivery": 24,
+                "departureCoordinate": {
+                    "x": 45.731548,
+                    "y": 4.890373
+                },
+                "arrivalCoordinate": {
+                    "x": 45.747531,
+                    "y": 4.833529
+                },
+                "arrivalClient": {
+                    "coordinate": {
+                        "x": 45.747531,
+                        "y": 4.833529
+                    },
+                    "request": 24,
+                    "matrixIndex": 1,
+                    "isWarehouse": false
+                },
+                "departureClient": {
+                    "coordinate": {
+                        "x": 45.731548,
+                        "y": 4.890373
+                    },
+                    "request": 19,
+                    "matrixIndex": 27,
+                    "isWarehouse": false
+                }
+            },
+            {
+                "distance": 1.763,
+                "time": 158.0,
+                "delivery": 20,
+                "departureCoordinate": {
+                    "x": 45.747531,
+                    "y": 4.833529
+                },
+                "arrivalCoordinate": {
+                    "x": 45.729207,
+                    "y": 4.833205
+                },
+                "arrivalClient": {
+                    "coordinate": {
+                        "x": 45.729207,
+                        "y": 4.833205
+                    },
+                    "request": 20,
+                    "matrixIndex": 17,
+                    "isWarehouse": false
+                },
+                "departureClient": {
+                    "coordinate": {
+                        "x": 45.747531,
+                        "y": 4.833529
+                    },
+                    "request": 24,
+                    "matrixIndex": 1,
+                    "isWarehouse": false
+                }
+            },
+            {
+                "distance": 2.35,
+                "time": 211.0,
+                "delivery": -1,
+                "departureCoordinate": {
+                    "x": 45.729207,
+                    "y": 4.833205
+                },
+                "arrivalCoordinate": {
+                    "x": 45.7696884,
+                    "y": 4.8836497
+                },
+                "arrivalClient": {
+                    "coordinate": {
+                        "x": 45.7696884,
+                        "y": 4.8836497
+                    },
+                    "request": -1,
+                    "matrixIndex": 40,
+                    "isWarehouse": true
+                },
+                "departureClient": {
+                    "coordinate": {
+                        "x": 45.729207,
+                        "y": 4.833205
+                    },
+                    "request": 20,
+                    "matrixIndex": 17,
+                    "isWarehouse": false
+                }
+            }
+        ]
+    }
+]
