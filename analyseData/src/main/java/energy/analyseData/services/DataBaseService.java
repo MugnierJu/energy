@@ -5,8 +5,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import model.Data;
 
@@ -58,7 +63,7 @@ public class DataBaseService {
 	
 	/*--------------------------Script--------------------------*/
 	
-	public void insertData(List<Data> dataList, String houseName ) {
+	public void insertData(List<Data> dataList, String houseName) {
 		openConnection();
 		try {
 			connection.setAutoCommit(false);
@@ -78,22 +83,84 @@ public class DataBaseService {
 			//Sinon ne prend que les data non insérées
 				//TODO ne prendre que les data non insérées
 			}
+			
+			//On récupère l'id max de chaque applicance
+			//TODO
+			int idFrigo = 0;
+			int idLampe = 0;
+			int idFour = 0;
+			//TODO récup indispensable si plusieurs maisons
+			int dateId = 0;
+			
+			//Lampe
+			//TODO
+			int lampMoyenne = 0;
+			int lampTotalDevice = 0;
+			
+			List<Integer> valuesLamp = new ArrayList<>();
 		
 			for(Data data : dataList) {
 				
-				//Get Date id
-				int dateId = 0;
+		        idFrigo++;
+				idLampe++;
+				idFour++;
+				dateId++;
+				
+				//Date
+				Statement stmtDate = null;
+				stmtDate = connection.createStatement();
+		        String sqlDate = "INSERT INTO DATE_VALEUR (id_date,dateTime) "
+		            + "VALUES ("+dateId+", '"+ new Timestamp(data.getDate().getTime())+"');";
+		        stmtDate.executeUpdate(sqlDate);	
+						
 				
 				//Frigo
-				Statement stmt = null;
-				stmt = connection.createStatement();
-		        String sql = "INSERT INTO FRIGO (id_frigo,value_frigo,id_date,id_maison) "
-		            + "VALUES (1, "+data.getFreezer()+","+dateId+", '"+houseName+"');";
-		        stmt.executeUpdate(sql);
-				connection.commit();
+				Statement stmtFrigo = null;
+				stmtFrigo = connection.createStatement();
+		        String sqlFrigo = "INSERT INTO FRIGO (id_frigo,value_frigo,id_date,id_maison) "
+		            + "VALUES ("+idFrigo+", "+data.getFreezer()+","+dateId+", '"+houseName+"');";
+		        stmtFrigo.executeUpdate(sqlFrigo);
 				
-				
+				//four
+				Statement stmtFour = null;
+				stmtFour = connection.createStatement();
+		        String sqlFour = "INSERT INTO four (id_four,value_four,id_date,id_maison) "
+		            + "VALUES ("+idFour+", "+data.getElectricCooker()+","+dateId+", '"+houseName+"');";
+		        stmtFour.executeUpdate(sqlFour);
+		        
+		        //lampe
+		        boolean isLampActive = false;
+		        if(data.getLamp() > 0) {
+		        	isLampActive = true;
+		        }
+		        
+				Statement stmtLampe = null;
+				stmtLampe = connection.createStatement();
+		        String sqlLampe = "INSERT INTO lamp_state (id_lamp,state_lamp,id_date,id_maison) "
+		            + "VALUES ("+idLampe+", "+isLampActive+","+dateId+", '"+houseName+"');";
+		        stmtLampe.executeUpdate(sqlLampe);
+		        valuesLamp.add(data.getLamp());
+		        
+				connection.commit();			
 			}
+			
+			//maj des valeurs de la lampe
+			int moyenne = 0;
+			for(int value : valuesLamp) {
+				moyenne+=value;
+			}
+			moyenne = moyenne/valuesLamp.size();
+					
+			int nvTotal = valuesLamp.size()+lampTotalDevice;
+			int nvMoyenne =  ((lampMoyenne*lampTotalDevice)+(moyenne*valuesLamp.size()))/nvTotal;
+			
+			//TODO DROP LAMP_VALEUR
+			
+			Statement stmtLampe = null;
+			stmtLampe = connection.createStatement();
+	        String sqlLampe = "INSERT INTO LAMP_VALEUR (id_lamp_valeur,valeur_moyenne,nombre_data,id_maison) "
+	            + "VALUES (1, "+nvMoyenne+","+nvTotal+", '"+houseName+"');";
+	        stmtLampe.executeUpdate(sqlLampe);			
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -164,6 +231,12 @@ public class DataBaseService {
 
 	public long getTime() {
 		return end-start;
+	}
+	
+	public String getStringTime() {
+		Date date = new Date(getTime());
+		DateFormat formatter = new SimpleDateFormat("mm'm' ss's' SSS");
+		return formatter.format(date);
 	}
 	
 }

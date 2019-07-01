@@ -29,6 +29,7 @@ public class ImportData {
 		for(File file : fileList) {		
 			List<Data> dataList = getData(file);
 			DataBaseService.getInstance().insertData(dataList, getHouseName(file));
+			System.out.println("Temps : "+DataBaseService.getInstance().getStringTime());
 		}
 	}
 	
