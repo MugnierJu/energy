@@ -53,8 +53,33 @@ public class ImportData {
 		    String line;
 		    boolean firstLine = true;
 		    
+		    int indexCooker = 0;
+	    	int indexLamp = 0;
+	    	int indexFreezer = 0;
+		    
 		    while ((line = br.readLine()) != null) {
 		    	if(firstLine) {
+		    		String[] values = line.split(SEPARATOR);
+
+			        for(int i=0; i < values.length; i++) {
+			        	//values[i] = values[i].replace("\"", "");
+			        	//System.out.println(values[i]);
+			        	if( indexFreezer== 0 && values[i].contains("freezer")) {
+			        		indexFreezer = new Integer(i);
+			        	}else if(indexFreezer== 0 && values[i].contains("Fridge")){
+			        		indexFreezer = i;
+			        	}
+			        	if(indexCooker== 0 && values[i].contains("Cooker")) {
+			        		indexCooker = i;
+			        	}else if(indexCooker== 0 && values[i].contains("oven")) {
+			        		indexCooker = i;
+			        	}
+			        	if(indexLamp== 0 && values[i].contains("lamp")) {
+			        		indexLamp = i;
+			        	}else if(indexLamp== 0 && values[i].contains("light")) {
+			        		indexLamp = i;
+			        	}
+			        }
 		    		firstLine = false;
 		    	}else {
 			        String[] values = line.split(SEPARATOR);
@@ -63,7 +88,7 @@ public class ImportData {
 			        	values[i] = values[i].replace("\"", "");
 			        }
 			        
-			        Data data = new Data(format.parse(values[0]), Integer.valueOf(values[1]), Integer.valueOf(values[2]), Integer.valueOf(values[3]));
+			        Data data = new Data(format.parse(values[0]), Integer.valueOf(values[indexCooker]), Integer.valueOf(values[indexFreezer]), Integer.valueOf(values[indexLamp]));
 			        dataList.add(data);
 		    	}
 		    }
