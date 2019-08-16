@@ -288,7 +288,7 @@ public class DataBaseService {
 			int moyenneConsoLampe = 0;
 
 			try {
-			Statement stmt = null;
+				Statement stmt = null;
 				stmt = connection.createStatement();
 				ResultSet rs = stmt.executeQuery( "SELECT * FROM lamp_valeur;" );
 		        while ( rs.next() ) {
@@ -324,7 +324,158 @@ public class DataBaseService {
        closeConnection();
        return conso;
 	}
-	/* ids */
+	
+	public String getBiggestConsumptionApplicance(Date startDate, Date endDate) {
+		openConnection();
+		List<Integer> sommesList = new ArrayList<>();
+		List<String> idMaisonList = new ArrayList<>();
+		
+		// FOUR
+		try (PreparedStatement pst = connection.prepareStatement("select *" + 
+					"			from (select sum(value_four) as sum_four, id_maison" + 
+					"				 from four" + 
+					"				 where date_four BETWEEN '"+new Timestamp(startDate.getTime())+"' AND '"+new Timestamp(endDate.getTime())+"'"+ 
+					"				 group by id_maison" + 
+					"				 order by (sum(value_four)) desc" + 
+					"				 ) pp" + 
+					"			limit 1;");
+            ResultSet rs = pst.executeQuery()) {
+
+	        while (rs.next()) {
+	        	sommesList.add(rs.getInt(1));
+		        idMaisonList.add(rs.getString(2));
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//FRIGO
+		try (PreparedStatement pst = connection.prepareStatement("select *" + 
+					"			from (select sum(value_frigo) as sum_frigo, id_maison" + 
+					"				 from frigo" + 
+					"				 where date_frigo BETWEEN '"+new Timestamp(startDate.getTime())+"' AND '"+new Timestamp(endDate.getTime())+"'"+ 
+					"				 group by id_maison" + 
+					"				 order by (sum(value_frigo)) desc" + 
+					"				 ) pp" + 
+					"			limit 1;");
+	        ResultSet rs = pst.executeQuery()) {
+	
+	        while (rs.next()) {
+	        	sommesList.add(rs.getInt(1));
+		        idMaisonList.add(rs.getString(2));
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		//LAMPE
+		try (PreparedStatement pst = connection.prepareStatement("select *" + 
+					"			from (select sum((valeur_moyenne*nombre_data)) as sum_lamp, id_maison" + 
+					"				 from lamp_valeur" + 
+					"				 group by id_maison"+ 
+					"				 order by 1 desc" + 
+					"				 ) pp" + 
+					"			limit 1;");
+
+	        ResultSet rs = pst.executeQuery()) {
+	
+	        while (rs.next()) {
+	        	sommesList.add(rs.getInt(1));
+		        idMaisonList.add(rs.getString(2));
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		String resultId = "";
+		int resultValue = -1;
+		String applianceName = "";
+		for(int i =0; i < sommesList.size(); i++) {
+			if(resultValue < sommesList.get(i)) {
+				resultValue = sommesList.get(i);
+				resultId = idMaisonList.get(i);
+				if(i == 0) {
+					applianceName = "Four";
+				}else if(i == 1) {
+					applianceName = "Frigo";
+				}else if(i == 3) {
+					applianceName = "Lampe";
+				}
+			}
+		}
+		
+		closeConnection();
+		return "Maison : "+resultId+" valeur : "+resultValue+" pour l'appliance : "+applianceName;
+	}
+	
+	/**
+	 * Renvoie les périodes pendant lesquels la consomation de la semaine 1 est plus élevée que la consomation de la semaine 2
+	 * @param startDates1
+	 * @param endDates1
+	 * @param startDates2
+	 * @param endDates2
+	 * @param idMaison
+	 * @return
+	 */
+	public List<Date> getPeriodOfUpperConsomation(Date startDates1, Date endDates1,Date startDates2, Date endDates2, String idMaison){
+		openConnection();
+		
+		List<Double> consoS1 = new ArrayList<>();
+		List<Date> dateList = new ArrayList<>();
+		List<Double> consoS2 = new ArrayList<>();
+		
+		try (PreparedStatement pst = connection.prepareStatement("		SELECT value_four+value_frigo+valeur_moyenne AS sumTotal, date_four, date_frigo" + 
+				"		FROM maison " + 
+				"		JOIN frigo ON frigo.id_maison = maison.id_maison" + 
+				"		JOIN four ON four.id_maison = maison.id_maison" + 
+				"		JOIN lamp_valeur ON lamp_valeur.id_maison = maison.id_maison" + 
+				"		WHERE maison.id_maison = '"+idMaison+"' AND date_four BETWEEN '"+new Timestamp(startDates1.getTime())+"' AND '"+new Timestamp(endDates1.getTime())+"'" + 
+				"		AND date_frigo BETWEEN '"+new Timestamp(startDates1.getTime())+"' AND '"+new Timestamp(endDates1.getTime())+"'" + 
+				"		AND date_frigo = date_four");
+	
+	        ResultSet rs = pst.executeQuery()) {
+	
+	        while (rs.next()) {
+	        	consoS1.add(rs.getDouble(1));
+	        	dateList.add(rs.getTimestamp(2));
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try (PreparedStatement pst = connection.prepareStatement("		SELECT value_four+value_frigo+valeur_moyenne AS sumTotal, date_four, date_frigo" + 
+				"		FROM maison " + 
+				"		JOIN frigo ON frigo.id_maison = maison.id_maison" + 
+				"		JOIN four ON four.id_maison = maison.id_maison" + 
+				"		JOIN lamp_valeur ON lamp_valeur.id_maison = maison.id_maison" + 
+				"		WHERE maison.id_maison = '"+idMaison+"' AND date_four BETWEEN '"+new Timestamp(startDates2.getTime())+"' AND '"+new Timestamp(endDates2.getTime())+"'" + 
+				"		AND date_frigo BETWEEN '"+new Timestamp(startDates2.getTime())+"' AND '"+new Timestamp(endDates2.getTime())+"'" + 
+				"		AND date_frigo = date_four");
+	
+	        ResultSet rs = pst.executeQuery()) {
+	
+	        while (rs.next()) {
+	        	consoS2.add(rs.getDouble(1));
+	        }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		List<Date> result = new ArrayList<>();
+		
+		for(int i=0; i < consoS1.size();i++) {
+			if(consoS2.get(i) != null) {
+				if(consoS1.get(i) < consoS2.get(i)) {
+					result.add(dateList.get(i));
+				}
+			}
+		}
+		
+		closeConnection();
+		return result;
+	}
+	
+	/*--------------------------ids--------------------------*/
 	
 	private int getLastIdFrigo() {
 		

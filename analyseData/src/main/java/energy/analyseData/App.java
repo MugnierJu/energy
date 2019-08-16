@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.temporal.IsoFields;
 import java.util.Date;
+import java.util.List;
 
 import energy.analyseData.services.Constants;
 import energy.analyseData.services.DataBaseService;
@@ -29,6 +30,8 @@ public class App
         //Questions 2019
         q12019();
         q22019();
+        q32019();
+        q42019();
     }
     
     /**
@@ -76,7 +79,46 @@ public class App
 		}
     }
     
+    private static void q32019() {
+    	SimpleDateFormat format = new SimpleDateFormat( "yyyy/MM/dd" );
+		try {
+			LocalDateTime now = LocalDateTime.now();
+			Date startDate = format.parse( "1998/"+(now.getMonthValue()-1)+"/"+now.getDayOfMonth());
+			Date endDate = format.parse( "1998/"+now.getMonthValue()+"/"+now.getDayOfMonth());
+
+	        String res = DataBaseService.getInstance().getBiggestConsumptionApplicance(startDate, endDate);
+			System.out.println("Appliance consomant le plus au cours du dernier moi : "+res);
+        
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
     
+    private static void q42019() {
+		LocalDateTime now = LocalDateTime.now();
+    	int semaine = now.get ( IsoFields.WEEK_OF_WEEK_BASED_YEAR );
+    	
+    	SimpleDateFormat format = new SimpleDateFormat( "yyyy/ww/u" );
+		try {			
+			Date startDateCourante = format.parse( "1998/"+semaine+"/1");
+			Date endDateCourante = format.parse( "1998/"+semaine+"/7" );
+			
+			Date startDatePrecedente = format.parse( "1998/"+(semaine-1)+"/1");
+			Date endDatePrecedente = format.parse( "1998/"+(semaine-1)+"/7" );;
+			
+	    	String idMaison = "2000918";
+	        List<Date> res = DataBaseService.getInstance().getPeriodOfUpperConsomation(startDateCourante, endDateCourante,startDatePrecedente,endDatePrecedente, idMaison);
+	    	
+	        for(Date dt : res) {
+	        	System.out.println(dt);
+	        }
+	    	
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
     
     /*----------------------------------------------------------------*/
     
@@ -149,6 +191,7 @@ public class App
 			e.printStackTrace();
 		}
     }
+    
     /**
      * Consommation moyenne printemps/ ́et ́e/automne/hiver
      */
